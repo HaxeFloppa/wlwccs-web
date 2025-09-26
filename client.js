@@ -1,4 +1,5 @@
-const net = require(['net']);
+// const net = require(['net']);
+import net from 'node:net';
 const PORT = 11110;
 const HOSTNAME = '192.168.1.94';
 
