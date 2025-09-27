@@ -1,7 +1,7 @@
 // const net = require(['net']);
 import net from 'node:net';
 const PORT = 11110;
-const HOSTNAME = '192.168.1.94';
+const HOSTNAME = '5.80.142.132';
 
 const client = net.createConnection(PORT, HOSTNAME, () => {
 	console.log('Connected to server');
