@@ -5,10 +5,10 @@ const socket = new WebSocket("wss://5.80.142.132:11110");
 
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
-function account_do(type) {
+async function account_do(type) {
 	const username_val = document.getElementById("username").value;
 	const password_val = document.getElementById("password").value;
-	const token = SubtleCrypto.digest("SHA-256", EncryptData.encode(username_val.concat(password_val)));
+	const token = await window.crypto.subtle.digest("SHA-256", EncryptData.encode(username_val.concat(password_val)));
 	socket.send(DecryptData.decode(token).concat(type));
 };
 
