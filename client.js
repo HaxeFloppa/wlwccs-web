@@ -1,4 +1,4 @@
-const socket = new WebSocket("wss://wlwccs.servegame.com:11110");
+const socket = new WebSocket("wss://wlwccs.servegame.com");
 
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
