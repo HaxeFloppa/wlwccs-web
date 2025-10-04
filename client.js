@@ -1,7 +1,4 @@
-// const socket = new WebSocket("ws://5.80.142.132");
-// const WebSocket = require('ws');
 const socket = new WebSocket("wss://5.80.142.132:11110");
-// document.getElementById("signup_button").addEventListener("click", account_do("S"));
 
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
@@ -10,6 +7,16 @@ async function account_do(type) {
 	const password_val = document.getElementById("password").value;
 	const token = await window.crypto.subtle.digest("SHA-256", EncryptData.encode(username_val.concat(password_val)));
 	socket.send(DecryptData.decode(token).concat(type));
+};
+
+function panel_switch() {
+	const account_panel = document.querySelectorAll(".account-panel");
+	for (let i = 0; i < account_panel.length; i++) {
+		account_panel[i].remove();
+	};
+	const text_test = document.createElement("p");
+	text_test.innerText = "test";
+	document.getElementById("server-panel").appendChild(text_test);
 };
 
 function signup_check(signup_status) {
