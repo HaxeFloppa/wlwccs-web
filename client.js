@@ -1,4 +1,4 @@
-const socket = new WebSocket("wss://wlwccs.duckdns.org");
+const socket = new WebSocket("wss://wlwccs.duckdns.org:80");
 
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
