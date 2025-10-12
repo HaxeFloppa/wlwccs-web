@@ -1,4 +1,5 @@
 const socket = new WebSocket("wss://wlwccs.duckdns.org:80");
+let account_id = "If Nathan is reading this... your roblox game will never come out >:(";
 
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
@@ -9,36 +10,47 @@ async function account_do(type) {
 	socket.send(DecryptData.decode(token).concat(type));
 };
 
+function toggle_req() {
+	socket.send(account_id);
+};
+
 function panel_switch() {
 	const account_panel = document.querySelectorAll(".account-panel");
 	for (let i = 0; i < account_panel.length; i++) {
 		account_panel[i].remove();
 	};
-	const text_test = document.createElement("p");
-	text_test.innerText = "test";
-	document.getElementById("server-panel").appendChild(text_test);
+	const panel_heading = document.createElement("h1");
+	text_test.innerText = "Server Panel";
+	const toggle_but = document.createElement("button");
+	toggle_but.setAttribute("onclick", "toggle_req()");
+	document.getElementById("server-panel").appendChild(panel_heading);
+	document.getElementById("server-panel").appendChild(toggle_but);
 };
 
 function signup_check(signup_status) {
-	switch (signup_status) {
-		case "0":
-			console.log("signup success");
-			panel_switch();
-			break;
+	let signup_cut = signup_status.replace("S", "");
+	switch (signup_cut) {
 		case "1":
 			console.log("signup failed");
+			break;
+		default:
+			console.log("signup success");
+			account_id = signup_cut;
+			panel_switch();
 			break;
 	};
 };
 
 function login_check(login_status) {
-	switch (login_status) {
-		case "0":
-			console.log("login success");
-			panel_switch();
-			break;
+	let login_cut = login_status.replace("L", "");
+	switch (login_cut) {
 		case "1":
 			console.log("login failed");
+			break;
+		default:
+			console.log("login success");
+			account_id = login_cut;
+			panel_switch();
 			break;
 	};
 };
@@ -51,10 +63,10 @@ socket.onmessage = (event) => {
 	console.log('received: ', event.data);
 	switch (event.data[0]) {
 		case "S":
-			signup_check(event.data[1]);
+			signup_check(event.data);
 			break;
 		case "L":
-			login_check(event.data[1]);
+			login_check(event.data);
 			break;
 	};
 };
