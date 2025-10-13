@@ -1,4 +1,4 @@
-const socket = new WebSocket("wss://wlwccs.duckdns.org:80");
+const socket = new WebSocket("wss://wlwccs.duckdns.org:49152");
 let account_id = "If Nathan is reading this... your roblox game will never come out >:(";
 
 const EncryptData = new TextEncoder();
@@ -23,8 +23,13 @@ function panel_switch() {
 	text_test.innerText = "Server Panel";
 	const toggle_but = document.createElement("button");
 	toggle_but.setAttribute("onclick", "toggle_req()");
+	const port_contents = document.createElement("p");
+	const v4port = (parseInt(account_id)+11111).toString();
+	const v6port = (parseInt(account_id)+11112).toString();
+	port_contents.innerText = `IPv4 port: ${v4port}, IPV6 port: ${v6port}`;
 	document.getElementById("server-panel").appendChild(panel_heading);
 	document.getElementById("server-panel").appendChild(toggle_but);
+	document.getElementById("server-panel").appendChild(port_contents);
 };
 
 function signup_check(signup_status) {
