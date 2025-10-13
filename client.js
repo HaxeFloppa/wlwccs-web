@@ -20,7 +20,7 @@ function panel_switch() {
 		account_panel[i].remove();
 	};
 	const panel_heading = document.createElement("h1");
-	text_test.innerText = "Server Panel";
+	panel_heading.innerText = "Server Panel";
 	const toggle_but = document.createElement("button");
 	toggle_but.setAttribute("onclick", "toggle_req()");
 	const port_contents = document.createElement("p");
