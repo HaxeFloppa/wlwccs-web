@@ -33,10 +33,9 @@ function panel_switch() {
 };
 
 function accountent_check(status, status_type) {
+	let data_cut = status.replace(status_type, "")
 	if (status_type != "S" || status_type != "L") {
-		let data_cut = status;
-	} else {
-		let data_cut = status.replace(status_type, "");
+		data_cut = status;
 	};
 	switch (data_cut) {
 		case "1":
