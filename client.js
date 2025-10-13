@@ -32,24 +32,17 @@ function panel_switch() {
 	document.getElementById("server-panel").appendChild(port_contents);
 };
 
-function accountent_check(status, status_type) {
-	let data_cut = status.replace(status_type, "")
-	if (status_type != "S" || status_type != "L") {
-		data_cut = status;
-	};
+function accountent_check(status) {
 	switch (data_cut) {
-		case "1":
-			if (status[0] == "S" || status[0] == "L") {
-				console.log(`${status_type} failed`);
-			} else {
-				console.log(`${status_type} success`);
-				account_id = data_cut;
-				panel_switch();
-			};
+		case "L1":
+			console.log("login failed");
+			break;
+		case "S1":
+			console.log("signup failed");
 			break;
 		default:
-			console.log(`${status_type} success`);
-			account_id = data_cut;
+			console.log("signup/login success");
+			account_id = status;
 			panel_switch();
 			break;
 	};
@@ -75,7 +68,7 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
 	console.log('received: ', event.data);
-	accountent_check(event.data, event.data[0]);
+	accountent_check(event.data);
 };
 
 socket.onclose = () => {
