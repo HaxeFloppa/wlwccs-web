@@ -28,9 +28,12 @@ function panel_switch() {
 	const v4port = (parseInt(account_id)+11111).toString();
 	const v6port = (parseInt(account_id)+11112).toString();
 	port_contents.innerText = `IPv4 port: ${v4port}, IPV6 port: ${v6port}`;
+	const server_val = document.createElement("p");
+	server_val.innerText = "Server status: unknown";
 	document.getElementById("server-panel").appendChild(panel_heading);
 	document.getElementById("server-panel").appendChild(toggle_but);
 	document.getElementById("server-panel").appendChild(port_contents);
+	document.getElementById("server-panel").appendChild(server_val);
 };
 
 function accountent_check(status) {
@@ -69,7 +72,11 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
 	console.log('received: ', event.data);
-	accountent_check(event.data);
+	if (event.data == "none" || event.data == "off" || event.data == "on") {
+		server_val.innerText = `Server status: ${event.data}`;
+	} else {
+		accountent_check(event.data);
+	};
 };
 
 socket.onclose = () => {
