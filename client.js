@@ -86,19 +86,26 @@ socket.onmessage = (event) => {
 	if (event.data == "none" || event.data == "off" || event.data == "on") {
 		document.getElementById("server_stat").innerText = `Server status: ${event.data}`;
 		if (event.data == "on") {
+			const companel_check = document.querySelectorAll(".command-panel");
 			document.getElementById("command-panel").appendChild(command_input);
 			document.getElementById("command-panel").appendChild(command_submit);
+			for (let i = 0; i < companel_check.length; i++) {
+				if (companel_check[i].id == "filler") {
+					document.getElementById("filler").remove();
+				};
+			};
 		} else {
 			const companel_clear = document.querySelectorAll(".command-panel");
 			for (let i = 0; i < companel_clear.length; i++) {
 				if (companel_clear[i].name == command_input.name) {
-					command_input.remove();
+					document.getElementById(command_input.id).remove();
 					const companel_filler = document.createElement("p");
 					companel_filler.innerText = "Server is off or doesn't exist.";
+					companel_filler.id = "filler";
 					document.getElementById("command-panel").appendChild(companel_filler);
 				};
 				if (companel_clear[i].id == command_submit.id) {
-					command_submit.remove();
+					document.getElementById(command_submit.id).remove();
 				};
 			};
 		};
