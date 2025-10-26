@@ -19,6 +19,8 @@ function submit_command() {
 	socket.send(command_send);
 };
 
+const command_input = document.createElement("input");
+const command_submit = document.createElement("button");
 function panel_switch() {
 	const account_panel = document.querySelectorAll(".account-panel");
 	for (let i = 0; i < account_panel.length; i++) {
@@ -41,12 +43,10 @@ function panel_switch() {
 	const server_val = document.createElement("p");
 	server_val.innerText = "Server status: unknown";
 	server_val.id = "server_stat";
-	const command_input = document.createElement("input");
 	command_input.class = "textinput";
 	command_input.id = "input_command";
 	command_input.type = "text";
 	command_input.name = "commandinput";
-	const command_submit = document.createElement("button");
 	command_submit.setAttribute("onclick", "submit_command()");
 	command_submit.innerText = "Run Command";
 	command_submit.id = "commandsubmit";
@@ -88,11 +88,11 @@ socket.onmessage = (event) => {
 	if (event.data == "none" || event.data == "off" || event.data == "on") {
 		document.getElementById("server_stat").innerText = `Server status: ${event.data}`;
 		if (event.data == "on") {
-			document.getElementById("command_submit").innerText = "Run Command";
-			document.getElementById("command_submit").setAttribute("onclick", "submit_command()");
+			command_submit.innerText = "Run Command";
+			command_submit.setAttribute("onclick", "submit_command()");
 		} else {
-			document.getElementById("command_submit").innerText = "Server is currently not available.";
-			document.getElementById("command_submit").setAttribute("onclick", "subcom_block()")
+			command_submit.innerText = "Server is currently not available.";
+			command_submit.setAttribute("onclick", "subcom_block()")
 		};
 	} else {
 		accountent_check(event.data);
