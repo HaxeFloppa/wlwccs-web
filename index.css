@@ -59,7 +59,7 @@ body {
 	white-space: nowrap;
 }
 
-.top-row>.buttons {
+.top-row>div {
 	width: 300px;
 	display: inline-block;
 }
