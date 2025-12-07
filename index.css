@@ -54,3 +54,12 @@ body {
 	border-style: solid;
 	border-color: #52565c;
 }
+
+.top-row {
+	white-space: nowrap;
+}
+
+.top-row>.buttons {
+	width: 300px;
+	display: inline-block;
+}
