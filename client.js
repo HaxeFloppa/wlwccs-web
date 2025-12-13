@@ -113,7 +113,7 @@ function panel_switch(amount_status) {
 		document.getElementById("server-panel").appendChild(view_heading);
 		document.getElementById("server-panel").appendChild(choice_heading);
 		document.getElementById("server-panel").appendChild(bedrock_choice);
-		document.getElementById("server-panel").apppendChild(bedrock_text);
+		document.getElementById("server-panel").appendChild(bedrock_text);
 		document.getElementById("server-panel").appendChild(java_choice);
 		document.getElementById("server-panel").appendChild(java_text);
 		document.getElementById("server-panel").appendChild(geyser_note);
