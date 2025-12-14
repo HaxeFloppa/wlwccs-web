@@ -97,10 +97,10 @@ function panel_switch(amount_status) {
 		choice_heading.innerText = "Server Choice";
 		const bedrock_choice = document.createElement("button");
 		bedrock_choice.setAttribute("onclick", "create_server(true,false)");
-		bedrock_text.innerText = "Bedrock Server";
+		bedrock_choice.innerText = "Bedrock Server";
 		const java_choice = document.createElement("button");
 		java_choice.setAttribute("onclick", "create_server(false,true)");
-		java_text.innerText = "Java Server";
+		java_choice.innerText = "Java Server";
 		const geyser_choice = document.createElement("button");
 		geyser_choice.setAttribute("onclick", "create_server(true,true)");
 		geyser_choice.innerText = "Bedrock & Java Server";
