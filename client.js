@@ -72,8 +72,8 @@ function panel_switch(port_check) {
 		toggle_but.setAttribute("onclick", "toggle_req()");
 		toggle_but.innerText = "Toggle Server";
 		const port_contents = document.createElement("p");
-		const v4port = "";
-		const v6port = "";
+		let v4port = "";
+		let v6port = "";
 		if (port_check[1] == "1") {
 			v4port = (parseInt(account_id)+11111).toString();
 			v6port = (parseInt(account_id)+11113).toString();
