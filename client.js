@@ -64,7 +64,7 @@ function create_server(bedrock, java) {
 };
 
 function panel_switch(port_check) {
-	if (amountStatus[1] != '0') {
+	if (amountStatus[1] != '2') {
 		in_spanel = true;
 		const panel_heading = document.createElement("h1");
 		panel_heading.innerText = "Server Panel";
