@@ -55,11 +55,3 @@ body {
 	border-color: #52565c;
 }
 
-.top-row {
-	white-space: nowrap;
-}
-
-.top-row>div {
-	width: 300px;
-	display: inline-block;
-}
