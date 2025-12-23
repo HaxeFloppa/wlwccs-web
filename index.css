@@ -45,9 +45,10 @@ body {
         border-radius: 12px;
         border-color: white;
 	border-style: solid;
+	padding: 5px;
 }
 
-.account-panel, .command-panel {
+.account-panel, .command-panel, .changelog {
 	background-color: #2f3133;
 	width: 50%;
 	border-radius: 15px;
