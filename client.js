@@ -85,6 +85,7 @@ function panel_switch(port_check) {
 				v4port = (parseInt(account_id)+33333).toString();
 				v6port = (parseInt(account_id)+33335).toString();
 				port_contents.innerText = `IPv4 port: ${v4port}, bedrock port: ${v6port}`;
+			};
 		};
 		const server_val = document.createElement("p");
 		server_val.innerText = `Server status: ${received_status}`;
