@@ -63,8 +63,18 @@ function create_server(bedrock, java) {
 	document.getElementById("server-panel").appendChild(create_notice2);
 };
 
-function allow_cheats() {
-	socket.send("G#AC#".concat(account_id));
+function toggle_gamemode() {
+	if (document.getElementById("set_mode").innerText == "Survival") {
+		document.getElementById("set_mode").innerText = "Creative";
+		change_prop("GC");
+	} else {
+		document.getElementById("set_mode").innerText = "Survival";
+		change_prop("GS");
+	};
+};
+
+function change_prop(prop_choice) {
+	socket.send(`G#${prop_choice}#`.concat(account_id));
 };
 
 function panel_switch(port_check) {
@@ -103,7 +113,14 @@ function panel_switch(port_check) {
 		command_submit.id = "commandsubmit";
 		const allow_cheats = document.createElement("button");
 		allow_cheats.innerText = "Toggle Cheats";
-		allow_cheats.setAttribute("onclick", "allow_cheats()");
+		allow_cheats.setAttribute("onclick", "change_prop('AC')");
+		const toggle_gamemode = document.createElement("button");
+		toggle_gamemode.setAttribute("class", "small_buton");
+		toggle_gamemode.setAttribute("onclick", "toggle_gamemode()");
+		toggle_gamemode.innerText = "Toggle Gamemode";
+		const set_mode = document.createElement("p");
+		set_mode.innerText = "Survival";
+		set_mode.id = "set_mode";
 		document.getElementById("server-panel").appendChild(panel_heading);
 		document.getElementById("server-panel").appendChild(toggle_but);
 		document.getElementById("server-panel").appendChild(port_contents);
@@ -113,6 +130,8 @@ function panel_switch(port_check) {
 		if (port_check[1] == '1') {
 			document.getElementById("server-panel").appendChild(allow_cheats);
 		};
+		document.getElementById("server-panel").appendChild(toggle_gamemode);
+		document.getElementById("server-panel").appendChild(set_mode);
 	} else {
 		const view_heading = document.createElement("h1");
 		view_heading.innerText = "Make a Server";

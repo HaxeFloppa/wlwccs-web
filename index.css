@@ -29,6 +29,21 @@ body {
 	transition: 0.4s;
 }
 
+.small_buton {
+	font-family: "Mojangles";
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	color: white;
+	background-color: #3b3d40;
+	border-radius: 12px;
+	padding: 10px;
+	border-color: white;
+	border-style: solid;
+	text-decoration: none;
+	transition: 0.4s;
+}
+
 .buton:hover, button:hover {
 	padding: 20px;
 	background-color: #212224;
