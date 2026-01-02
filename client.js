@@ -105,7 +105,6 @@ function panel_switch(port_check) {
 		allow_cheats.innerText = "Toggle Cheats";
 		allow_cheats.setAttribute("onclick", "change_prop('AC')");
 		const toggle_gamemode = document.createElement("button");
-		toggle_gamemode.setAttribute("class", "small_buton");
 		toggle_gamemode.setAttribute("onclick", "change_prop('CG')");
 		toggle_gamemode.innerText = "Toggle Gamemode";
 		document.getElementById("server-panel").appendChild(panel_heading);
