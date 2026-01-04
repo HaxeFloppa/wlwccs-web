@@ -94,13 +94,14 @@ function panel_switch(port_check) {
 		const server_val = document.createElement("p");
 		server_val.innerText = `Server status: ${received_status}`;
 		server_val.id = "server_stat";
-		command_input.class = "textinput";
+		command_input.setAttribute("class", "textinput");
 		command_input.id = "input_command";
 		command_input.type = "text";
 		command_input.name = "commandinput";
 		command_submit.setAttribute("onclick", "submit_command()");
 		command_submit.innerText = "Run Command";
 		command_submit.id = "commandsubmit";
+		command_submit.placeholder = "Command goes here ...";
 		const allow_cheats = document.createElement("p");
 		allow_cheats.innerText = "Toggle Cheats";
 		allow_cheats.setAttribute("onclick", "change_prop('AC')");
@@ -119,6 +120,7 @@ function panel_switch(port_check) {
 		document.getElementById("server-panel").appendChild(server_val);
 		document.getElementById("server-panel").appendChild(command_input);
 		document.getElementById("server-panel").appendChild(command_submit);
+		document.getElementById("server-panel").appendChild(document.createElement("br"));
 		document.getElementById("server-panel").appendChild(server_props);
 		document.getElementById("server_prop").appendChild(serverprops_title);
 		if (port_check[1] == '1') {

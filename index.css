@@ -43,10 +43,13 @@ body {
 
 .para_button:hover {
 	font-size: 20px;
+	background-color: #171717;
+	border-radius: 15px;
 }
 
 fieldset {
 	border-radius: 12px;
+	background-color: #3b3d40;
 }
 
 .textinput {
