@@ -47,6 +47,26 @@ body {
 	border-radius: 15px;
 }
 
+.git-button {
+	font-family: "Mojangles";
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	color: black;
+	background-color: white;
+	border-radius: 12px;
+	padding: 15px;
+	border-color: white;
+	border-style: solid;
+	text-decoration: none;
+	transition: 0.4s;	
+}
+
+.git-button:hover {
+	padding: 20px;
+	border-radius: 15px;
+}
+
 fieldset {
 	border-radius: 12px;
 	background-color: #3b3d40;
