@@ -136,22 +136,28 @@ function panel_switch(port_check) {
 	} else {
 		const view_heading = document.createElement("h1");
 		view_heading.innerText = "Make a Server";
-		const choice_heading = document.createElement("h2");
+		const choice_set = document.createElement("fieldset");
+		choice_set.id = "choice_set";
+		const choice_heading = document.createElement("legend");
 		choice_heading.innerText = "Server Choice";
-		const bedrock_choice = document.createElement("button");
+		const bedrock_choice = document.createElement("p");
+		bedrock_choice.setAttribute("class", "para_button");
 		bedrock_choice.setAttribute("onclick", "create_server(true,false)");
 		bedrock_choice.innerText = "Bedrock Server";
-		const java_choice = document.createElement("button");
+		const java_choice = document.createElement("p");
+		java_choice.setAttribute("class", "para_button");	
 		java_choice.setAttribute("onclick", "create_server(false,true)");
 		java_choice.innerText = "Java Server";
-		const geyser_choice = document.createElement("button");
+		const geyser_choice = document.createElement("p");
+		geyser_choice.setAttribute("class", "para_button");
 		geyser_choice.setAttribute("onclick", "create_server(true,true)");
 		geyser_choice.innerText = "Bedrock & Java Server";
 		document.getElementById("server-panel").appendChild(view_heading);
-		document.getElementById("server-panel").appendChild(choice_heading);
-		document.getElementById("server-panel").appendChild(bedrock_choice);
-		document.getElementById("server-panel").appendChild(java_choice);
-		document.getElementById("server-panel").appendChild(geyser_choice);
+		document.getElementById("server-panel").appendChild(choice_set);
+		document.getElementById("choice_set").appendChild(choice_heading);
+		document.getElementById("choice_set").appendChild(bedrock_choice);
+		document.getElementById("choice_set").appendChild(java_choice);
+		document.getElementById("choice_set").appendChild(geyser_choice);
 	};
 };
 
