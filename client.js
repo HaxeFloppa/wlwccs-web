@@ -98,10 +98,15 @@ function panel_switch(port_check) {
 		command_input.id = "input_command";
 		command_input.type = "text";
 		command_input.name = "commandinput";
-		command_submit.setAttribute("onclick", "submit_command()");
-		command_submit.innerText = "Run Command";
+		if (received_status == "on") {
+			command_submit.setAttribute("onclick", "submit_command()");
+			command_submit.innerText = "Run Command";
+		} else {
+			command_submit.setAttribute("onclick", "subcom_block()");
+			command_submit.innerText = "Server is currently not available.";
+		};
 		command_submit.id = "commandsubmit";
-		command_submit.setAttribute("placeholder", "Command goes here ...");
+		command_input.setAttribute("placeholder", "Command goes here ...");
 		const allow_cheats = document.createElement("p");
 		allow_cheats.innerText = "Toggle Cheats";
 		allow_cheats.setAttribute("onclick", "change_prop('AC')");
