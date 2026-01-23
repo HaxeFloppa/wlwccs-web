@@ -47,6 +47,11 @@ body {
 	border-radius: 15px;
 }
 
+.less-important-data {
+	color: #dbdbdb;
+	font-size: 12px;
+}
+
 .git-buton {
 	font-family: "Mojangles";
 	font-optical-sizing: auto;
