@@ -6,10 +6,25 @@ let received_status = "none";
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
 async function account_do(type) {
-	const username_val = document.getElementById("username").value;
-	const password_val = document.getElementById("password").value;
-	const token = await window.crypto.subtle.digest("SHA-256", EncryptData.encode(username_val.concat(password_val)));
-	socket.send(DecryptData.decode(token).concat(type));
+	let age = 0;
+	if (type == 'S') {
+		const bday_check = (document.getElementById("birthday").value).split('-');
+		const object_date = new Date();
+		const current_date = object_date.toISOString().split('T')[0].split('-');
+		age = parseInt(current_date[0]) - parseInt(bday_check[0]);
+		const month = parseInt(current_date[1]) - parseInt(bday_check[1]);
+		if (month < 0 || (month == 0 && parseInt(bday_check[2]) > parseInt(current_date[2]))) {
+			age--;
+		};
+	};
+	if (type != 'S' || (type == 'S' && age >= 13) {
+		const username_val = document.getElementById("username").value;
+		const password_val = document.getElementById("password").value;
+		const token = await window.crypto.subtle.digest("SHA-256", EncryptData.encode(username_val.concat(password_val)));
+		socket.send(DecryptData.decode(token).concat(type));
+	} else {
+		document.getElementById("signup-status").innerText = "You must be 13 or above to make a WLWCCS Hosting account.";
+	};
 };
 
 function toggle_req() {
