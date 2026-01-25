@@ -2,6 +2,7 @@ const socket = new WebSocket("wss://wlwccs.duckdns.org:49152");
 let account_id = "freddie gibbs";
 let in_spanel = false;
 let received_status = "none";
+let account_key = "";
 
 const EncryptData = new TextEncoder();
 const DecryptData = new TextDecoder();
@@ -21,14 +22,15 @@ async function account_do(type) {
 		const username_val = document.getElementById("username").value;
 		const password_val = document.getElementById("password").value;
 		const token = await window.crypto.subtle.digest("SHA-256", EncryptData.encode(username_val.concat(password_val)));
-		socket.send(DecryptData.decode(token).concat(type));
+		account_key = DecryptData.decode(token);
+		socket.send(account_key.concat(type));
 	} else {
 		document.getElementById("signup-status").innerText = "You must be 13 or above to make a WLWCCS Hosting account.";
 	};
 };
 
 function toggle_req() {
-	socket.send(account_id);
+	socket.send(`${account_id}#${account_key}`);
 };
 
 function submit_command() {
@@ -55,16 +57,16 @@ function server_type(amount_status) {
 function create_server(bedrock, java) {
 	if (bedrock) {
 		// bedrock server
-		socket.send("NB#".concat(account_id));
+		socket.send("NB#".concat(account_id, '#', account_key));
 	} else if (bedrock && java) {
 		// geyser server
-		socket.send("NG#".concat(account_id));
+		socket.send("NG#".concat(account_id, '#', account_key));
 	} else if (java) {
 		// java server
-		socket.send("NJ#".concat(account_id));
+		socket.send("NJ#".concat(account_id, '#', account_key));
 	} else {
 		// default to bedrock
-		socket.send("NB#".concat(account_id));
+		socket.send("NB#".concat(account_id, '#', account_key));
 	};
 	const server_panel = document.querySelectorAll("server-panel");
 	for (let i = 0; i < server_panel.length; i++) {
